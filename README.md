@@ -32,23 +32,23 @@ An IoT-enabled irrigation monitoring system that uses an **ESP32** to read soil 
 ## Project Structure
 smart-plant-monitoring/
 │
-├── hardware/
-│ ├── schematics/ # KiCad or Fritzing files & images
-│ ├── bom.csv # Bill of Materials
+├──> hardware/
+│ ──> schematics/ # KiCad or Fritzing files & images
+│ ──> bom.csv # Bill of Materials
 │
-├── firmware/
-│ ├── platformio.ini # PlatformIO config (optional)
-│ ├── src/
-│ │ └── main.ino # Arduino / ESP32 firmware
+├──> firmware/
+│ ──> platformio.ini # PlatformIO config (optional)
+│ ──> src/
+│  └──> main.ino # Arduino / ESP32 firmware
 │
-├── docs/
-│ ├── photos/ # Photos: setup, wiring, PCB
-│ ├── dashboard_gif.gif # Short demo GIF of Blynk dashboard
-│ └── data/ # sample CSVs with pilot data
+├──> docs/
+│ ──> photos/ # Photos: setup, wiring, PCB
+│ ──> dashboard_gif.gif # Short demo GIF of Blynk dashboard
+│ ──> data/ # sample CSVs with pilot data
 │
-├── .gitignore
-├── README.md
-└── LICENSE
+├──> .gitignore
+├──> README.md
+└──> LICENSE
 
 ---
 
@@ -68,4 +68,10 @@ Include a small CSV or chart in `docs/data/` showing baseline vs pilot daily wat
 2. Connect temperature sensor (DHT22 or DS18B20) to a digital pin.
 3. Use a relay module (driven by a GPIO pin via transistor if necessary) to control the pump/valve.
 4. Power ESP32 with 5V (Vin) or USB, and power the pump separately with appropriate supply and common ground.
+
+Troubleshooting
+
+If ADC values are noisy: add a simple RC low-pass, average readings in firmware, and use capacitor on sensor Vcc.
+If relay clicks but pump doesn’t run: check separate pump power and common ground.
+If Blynk disconnects: implement reconnect logic and small backoff.
 
