@@ -48,7 +48,7 @@ smart-plant-monitoring/
 │
 ├──> .gitignore
 ├──> README.md
-└──> LICENSE
+  ──> LICENSE
 
 ---
 
